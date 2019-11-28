@@ -3,7 +3,7 @@ using namespace std;
 
 class Transpose{
     private:
-        int a[2][2],b[2][2],i,j;
+        int a[2][2],i,j;
     public:
         Transpose(){
             for(i=0;i<2;i++){
@@ -23,23 +23,17 @@ class Transpose{
             
         }
 
-        void change(){
-            
+        Transpose change(Transpose z){
+            Transpose x;
             for(i=0;i<2;i++){
                 for(j=0;j<2;j++){
-                    b[i][j] = a[j][i];
+                    x.a[i][j] = z.a[j][i];
                 }
-
-        
-
-            
-
-
-
-        }
+            }
+            return x;
         }
 
-        void display(){
+        void display(Transpose F){
             for(i=0;i<2;i++){
                 for(j=0;j<2;j++){
                     cout<<a[i][j]<<"\t";
@@ -50,7 +44,7 @@ class Transpose{
             cout<<endl;
             for(i=0;i<2;i++){
                 for(j=0;j<2;j++){
-                    cout<<b[i][j]<<"\t";
+                    cout<<F.a[i][j]<<"\t";
                 }
                 cout<<endl;
             }
@@ -74,7 +68,7 @@ class Transpose{
 
 int main(){
     
-    int a[2][2],b[2][2],i,j;
+    int a[2][2],i,j;
     for(i=0;i<2;i++){
             for(j=0;j<2;j++){
                 cin>>a[i][j]; 
@@ -82,8 +76,8 @@ int main(){
             cout<<endl;
     }
     Transpose a1(a);
-    a1.change();
-    a1.display();
+    Transpose F = a1.change(a1);
+    a1.display(F);
     
 
 
